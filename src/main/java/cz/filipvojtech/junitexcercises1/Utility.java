@@ -16,20 +16,14 @@ public class Utility {
     // to check which of 3 integer values,
     // passed as parameters, is the largest.
     public static int checkLargest(int... numbers) {
-        int max = numbers[0];
-        for (int i = 1; i < numbers.length; i++) {
-            if (numbers[i] > max) {
-                max = numbers[i];
-            }
-        }
-        return max;
+        return Math.max(numbers[0], Math.max(numbers[1], numbers[2]));
     }
 
     // Write a Java method, swap {},
     // to swap the first 2 letters of a 4-letter string,
     // passed as a parameter,
     // with the last 2 e.g. “ABCD” is swapped to “CDAB”.
-    public static String swap(String input) {
+    public static String swap(String input) throws IllegalArgumentException {
         if (input.length() != 4) {
             throw new IllegalArgumentException("Argument not of length 4");
         }
@@ -47,12 +41,10 @@ public class Utility {
         double convertedTemp;
 
         switch (unit) {
-            case 'C':
-            case 'c':
+            case 'C', 'c':
                 convertedTemp = C_TO_F * temperature + 32;
                 return MessageFormat.format(Messages.celsiusToFahrenheitMessage, temperature, convertedTemp);
-            case 'F':
-            case 'f':
+            case 'F', 'f':
                 convertedTemp = F_TO_C * (temperature - 32);
                 return MessageFormat.format(Messages.fahrenheitToCelsiusMessage, temperature, convertedTemp);
             default:
@@ -81,6 +73,10 @@ public class Utility {
         fee += days * 10;
         // Calculate the base fee
         fee += 2;
+
+        if (lastDayHoursParked == 0 && days > 0) {
+            fee -= 2;
+        }
         // Remove the three-hour period
         lastDayHoursParked -= 3;
 
@@ -97,7 +93,7 @@ public class Utility {
     // representing the student’s marks,
     // calculates the average
     // and returns a message indicating the student’s overall award classification.
-    private static String getOverallClassificationMessage(int... marks) {
+    public static String getOverallClassificationMessage(int... marks) {
         int sum = 0, count = marks.length;
         float average;
 
