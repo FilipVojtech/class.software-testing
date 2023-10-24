@@ -93,14 +93,14 @@ public class Utility {
     // representing the student’s marks,
     // calculates the average
     // and returns a message indicating the student’s overall award classification.
-    public static String getOverallClassificationMessage(int... marks) {
-        int sum = 0, count = marks.length;
-        float average;
+    public static String getOverallClassificationMessage(float... marks) {
+        int count = marks.length;
+        float sum = 0, average;
 
         for (var mark : marks) {
             sum += mark;
         }
-        average = (float) sum / count;
+        average = sum / count;
 
         if (average > .69) {
             return Messages.PASS_1_1;

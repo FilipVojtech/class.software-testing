@@ -221,4 +221,24 @@ class UtilityTest {
     void getOverallClassificationMessage_1() {
         assertEquals(Messages.PASS_1_1, getOverallClassificationMessage(1));
     }
+
+    @Test
+    void getOverallClassificationMessage_2() {
+        assertEquals(Messages.PASS_2_1, getOverallClassificationMessage(0.65f));
+    }
+
+    @Test
+    void getOverallClassificationMessage_3() {
+        assertEquals(Messages.PASS_2_2, getOverallClassificationMessage(0.55f));
+    }
+
+    @Test
+    void getOverallClassificationMessage_4() {
+        assertEquals(Messages.PASS, getOverallClassificationMessage(0.40f));
+    }
+
+    @Test
+    void getOverallClassificationMessage_5() {
+        assertEquals(Messages.FAIL, getOverallClassificationMessage(0));
+    }
 }

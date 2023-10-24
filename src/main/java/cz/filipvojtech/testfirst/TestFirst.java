@@ -1,26 +1,13 @@
 package cz.filipvojtech.testfirst;
 
-import java.text.MessageFormat;
-
 public class TestFirst {
-    private final static String[] days = new String[]{
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-    };
-    private final static String MONDAY_MESSAGE = "{0} - it's the beginning of the week";
-
     public static String checkWeekday(int day) {
         var daysTillFri = 5 - day;
         switch (day) {
             case 1:
-                return MessageFormat.format(MONDAY_MESSAGE, days[day - 1]);
+                return "Monday - it's the beginning of the week";
             case 2:
-               return  "Tuesday - only " + daysTillFri + " days till Friday";
+                return "Tuesday - only " + daysTillFri + " days till Friday";
             case 3:
                 return "Wednesday - only " + daysTillFri + " days till Friday";
             case 4:
